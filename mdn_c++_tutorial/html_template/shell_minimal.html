@@ -110,6 +110,7 @@
     <hr />
     <textarea class="emscripten" id="output" rows="8"></textarea>
     <hr />
+    <button class="mybutton">Run myFunction</button>
     <script type="text/javascript">
       var statusElement = document.getElementById("status");
       var progressElement = document.getElementById("progress");
@@ -198,6 +199,19 @@
           if (text) Module.printErr("[post-exception status] " + text);
         };
       };
+
+      // My Code
+      document
+        .querySelector(".mybutton")
+        .addEventListener("click", function () {
+          // alert("check console");
+          var result = Module.ccall(
+            "myFunction", // name of C function
+            null, // return type
+            null, // argument types
+            null // arguments
+          );
+        });
     </script>
     {{{ SCRIPT }}}
   </body>

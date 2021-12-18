@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+
+<script type="module">
+  async function init() {
+    // const { instance } = await WebAssembly.instantiateStreaming(
+    //   fetch("./add.wasm")
+    // );
+    const response = await fetch("./add.wasm");
+    const buffer = await response.arrayBuffer();
+    const obj = await WebAssembly.instantiate(buffer);
+    console.log(obj.instance.exports.add(1, 6));
+  }
+  init();
+</script>
